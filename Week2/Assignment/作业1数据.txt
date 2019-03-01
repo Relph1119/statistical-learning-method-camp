@@ -1,0 +1,15 @@
+day	outlook	temp	humid	wind	tennis
+1	sun	hot	high	weak	no
+2	sun	hot	high	strong	no
+3	cloud	hot	high	weak	yes
+4	rain	mild	high	weak	yes
+5	rain	cool	norm	weak	yes
+6	rain	cool	norm	strong	no
+7	cloud	cool	norm	strong	yes
+8	sun	mild	high	weak	no
+9	sun	cool	norm	weak	yes
+10	rain	mild	norm	weak	yes
+11	sun	mild	norm	strong	yes
+12	cloud	mild	high	strong	yes
+13	cloud	hot	norm	weak	yes
+14	rain	mild	high	strong	no

@@ -1,0 +1,12 @@
+数据集：比马印第安人糖尿病数据集（Pima Indians Diabetes Dataset）涉及根据医疗记录预测比马印第安人5年内糖尿病的发病情况。
+
+字段说明：
+1.怀孕次数 Pregnancies
+2.在口服葡萄糖耐受试验中，血糖浓度为2小时 Glucose
+3.舒张压(mm Hg) BloodPressure
+4.肱三头肌皮肤褶皱厚度(mm) SkinThickness
+5.2小时血清胰岛素(mu U/ml) Insulin
+6.身体质量指数(公斤/重量(高度)^ 2) BMI
+7.糖尿病血统函数 DiabetesPedigreeFunction
+8.年龄(岁) Age
+9.类变量(0或1) Outcome
