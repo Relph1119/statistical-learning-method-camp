@@ -1,4 +1,5 @@
 ## 包含文件
 
-- Reference Material：统计学习方法之基础篇.PPT以及PPT中推荐的视频和书籍，第1章 统计学习方法概论.pdf
+- Reference Material：第5、8章PPT
 - Assignment：作业
+- MyHomeWork：第二周参考答案
