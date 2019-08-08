@@ -1,7 +1,7 @@
 ﻿## 第6章-Logistic回归与最大熵模型-改进的迭代尺度法
 ### 改进的迭代尺度法
 &emsp;&emsp;最大熵模型的形式是一个指数形式，需要对$w$进行参数估计，求解$w$的方法是最大似然估计，其似然函数为$$L(w)=\sum_{x, y} \big[\tilde{P}(x, y) \sum_{i=1}^{n} w_i f_i(x, y)\big]-\sum_{x} \big[ \tilde{p}(x) \ln z_w(x) \big]$$
-&emsp;&emsp;其中$\tilde{P}(x, y)$是$x$和$y$的经验分布，根据训练集当中特定的$x$和$y$的个数占总训练集实例的比值；$w_i$为所求，一共需要求解$n$个$w$；$f_i(x,y)$是已经给定的特征函数，取值为0或1；$Z_w(x)$表示关于给定$x$的$y$条件分布的归一化系数，$Z_w(x)=\sum_y \exp \big[ \sum_i w_i f_i(x,y) \big]$，在该公式中，也存在$w$。  
+&emsp;&emsp;其中$\tilde{P}(x, y)$是$x$和$y$的经验分布，根据训练集当中特定的$x$和$y$的个数占总训练集实例的比值；$w_i$为所求，一共需要求解$n$个$w$；$f_i(x,y)$是已经给定的特征函数，取值为0或1；$Z_w(x)$表示关于给定$x$的$y$条件分布的归一化系数，$\displaystyle Z_w(x)=\sum_y \exp \big[ \sum_i w_i f_i(x,y) \big]$，在该公式中，也存在$w$。  
 &emsp;&emsp;这个函数$L(w)$是关于$w$的，函数形式比较复杂，有指数上面的$w$并还要取对数，直接对其求导比较难求，使用了迭代的方法求导。首先给$w$初值，然后更新$w$，使$L(w)$的值不断增大，从而求得$L(w)$的最大值。  
 
 ### 求解最大似然函数
@@ -18,7 +18,7 @@ $\begin{aligned} \because \frac{Z_{w+\delta}(x)}{Z_w(x)}
 &= \frac{1}{Z_w(x)} \cdot \sum_y \big[ \exp \sum_{i=1}^n w_i f_i(x,y) \cdot \exp \sum_{i=1}^n \delta_i f_i(x,y) \big] \\
 &= \sum_y \frac{1}{Z_w(x)} \big[ \exp \sum_{i=1}^n w_i f_i(x,y) \cdot \exp \sum_{i=1}^n \delta_i f_i(x,y) \big] \\
 \end{aligned}$  
-$\because $最大熵模型为$P_w(y|x) = \frac{1}{Z_w(x)} \exp \big( \sum_{i=1}^n w_i f_i(x,y) \big)$  
+$\because $最大熵模型为$\displaystyle P_w(y|x) = \frac{1}{Z_w(x)} \exp \big( \sum_{i=1}^n w_i f_i(x,y) \big)$  
 $\begin{aligned} \therefore \frac{Z_{w+\delta}(x)}{Z_w(x)}
 &= \sum_y \frac{1}{Z_w(x)} \big[ \exp \sum_{i=1}^n w_i f_i(x,y) \cdot \exp \sum_{i=1}^n \delta_i f_i(x,y) \big] \\
 &= \sum_y \big[ P_w(y|x) \exp \big( \sum_{i=1}^n \delta_i f_i(x,y) \big) \big]
@@ -29,7 +29,7 @@ $\begin{aligned}  将上式代入并整理：L(w+\delta) - L(w)
 &= A(\delta|w)
 \end{aligned}$  
 目前得到了改变量的下界，如果想让该值最大，就最大化$A(\delta|w)$值。  
-$\because (e^{\sum \delta_i f_i})' = e^{\sum \delta_i f_i} \cdot f_i$，求导之后依然有其他的$\delta_i$分量，但是希望对$\delta_i$求导之后能得到只关于$\delta_i$的函数，使得$g(\delta_i)=0$，需要对$\exp \big( \sum_{i=1}^n \delta_i f_i(x,y) \big)$再进行变换，需要用到Jesson不等式。
+$\because (e^{\sum \delta_i f_i})' = e^{\sum \delta_i f_i} \cdot f_i$，求导之后依然有其他的$\delta_i$分量，但是希望对$\delta_i$求导之后能得到只关于$\delta_i$的函数，使得$g(\delta_i)=0$，需要对$\displaystyle \exp \big( \sum_{i=1}^n \delta_i f_i(x,y) \big)$再进行变换，需要用到Jesson不等式。
 
 ----
 **Jesson不等式：**  
@@ -41,7 +41,7 @@ $$\begin{aligned}  \exp \big( \sum_i \delta_i f_i(x,y) \big)
 &= \exp (\sum_i \frac{f_i(x,y)}{f^\#(x,y)} f^\#(x,y) \delta_i) \\
 & \leqslant \sum_i \frac{f_i(x,y)}{f^\#(x,y)} \exp(f^\#(x,y) \delta_i)
 \end{aligned}$$   
-$\therefore A(\delta |w) \geqslant \sum_{x,y} \tilde{P}(x, y) \sum_{i=1}^n \delta_i f_i(x,y) + 1 - \sum_x \tilde{P}(x) \sum_y \big[ P_w(y|x) \sum_i \frac{f_i(x,y)}{f^\#(x,y)} \exp(f^\#(x,y) \delta_i) \big] = B(\delta | w)$  
+$\displaystyle \therefore A(\delta |w) \geqslant \sum_{x,y} \tilde{P}(x, y) \sum_{i=1}^n \delta_i f_i(x,y) + 1 - \sum_x \tilde{P}(x) \sum_y \big[ P_w(y|x) \sum_i \frac{f_i(x,y)}{f^\#(x,y)} \exp(f^\#(x,y) \delta_i) \big] = B(\delta | w)$  
 &emsp;&emsp;经过上述放缩，$B(\delta|w)$是对数似然函数改变量的一个新的下界。对$B(\delta|w)$求导，使得导数等于0。 
 
 ----
@@ -51,5 +51,5 @@ $\therefore A(\delta |w) \geqslant \sum_{x,y} \tilde{P}(x, y) \sum_{i=1}^n \delt
 ----
 &emsp;&emsp;求$B(\delta|w)$对$\delta_i$的偏导数，并令偏导数为0可得：$$\sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) = E_{\tilde{P}}(f_i)$$
 &emsp;&emsp;求解使得该等式成立的$\delta_i$，没有一个显示的形式，对于这样一个方程，要如何寻找零点？此时可以用牛顿迭代法。  
-&emsp;&emsp;上述问题变为：已知$g(\delta_i) = \sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) - E_{\tilde{P}}(f_i)$，令$g(\delta_i)  = 0$，求解$\delta_i$。  
+&emsp;&emsp;上述问题变为：已知$\displaystyle g(\delta_i) = \sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) - E_{\tilde{P}}(f_i)$，令$g(\delta_i)  = 0$，求解$\delta_i$。  
 &emsp;&emsp;求解步骤：先给出$\delta_i$的初值，更新$\delta_i^{(k+1)} = \delta_i^{(k)} - \frac{g(\delta_i^{(k)})}{g'(\delta_i^{(k)})}$ 

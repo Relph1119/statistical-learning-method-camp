@@ -4,21 +4,21 @@
 ### 原始问题
 &emsp;&emsp;优化问题的一般形式，对于任意一个优化问题，都有一个需要优化的目标函数为$f$，需要优化的变量为$x$，最小化$f(x)$，会有一些约束条件，有不等式约束$c_i(x) \leqslant 0, i= 1, 2, \dots, k$，也有等式约束$h_j(x)=0,j=1,2,\dots,l$，很多问题并不是两个约束都有，比如第6章中，只有等式约束（即$k=0$），第7章SVM中，只有不等式约束（即$l=0$）。  
 原始问题$P$：$$\begin{array}{l}
-\min_{x \in R^n} f(x) \\ 
+\mathop{\min}\limits_{x \in R^n} f(x) \\ 
 \text { s.t. } c_i(x) \leqslant 0, i= 1, 2, \dots, k \\ 
 \quad\quad h_j(x)=0,j=1,2,\dots,l
 \end{array}$$  
 
 ### 拉格朗日函数
 &emsp;&emsp;在不等式约束中，有多少个不等式就有多少个$\alpha$，有多少个等式就有多少个$\beta$。
-$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^k \alpha_i c_i(x) + \sum_{j=1}^l \beta_j h_j(x)$  
+$\displaystyle L(x, \alpha, \beta) = f(x) + \sum_{i=1}^k \alpha_i c_i(x) + \sum_{j=1}^l \beta_j h_j(x)$  
 其中$\alpha_i \geqslant 0$目标函数$f$，优化变量$x$，可行域为满足所有约束条件的$x$，最优值为$x^*$，对应的目标函数为$p^*=f(x^*)$。  
 **结论1：** 可以用拉格朗日函数的极小极大问题表示为原始问题，记为$$P=\min_x \max_{\alpha, \beta} L(x, \alpha, \beta)= \min_x \left \{ \begin{array}{ll} f(x) & c_i(x) \leqslant 0, h_j(x)=0\\
 \infty & \textrm{其他}
 \end{array}  \right.$$
-**结论2：** 对偶问题$D$可以用拉格朗日函数的极大极小问题表示，记为$$\begin{array}{l}
-\max_{\alpha, \beta} min_x L(x, \alpha, \beta) \\ 
-\text { s.t. } \alpha_i \geqslant 0, i= 1, 2, \dots, k
+**结论2：** 对偶问题$D$可以用拉格朗日函数的极大极小问题表示，记为$$\begin{array}{ll}
+\displaystyle \max_{\alpha, \beta} \min_x & L(x, \alpha, \beta) \\ 
+\text { s.t. } & \alpha_i \geqslant 0, i= 1, 2, \dots, k
 \end{array}$$  
 其中，最优解为$\alpha^*,\beta^*$，对应的值记为$d^*$。
 

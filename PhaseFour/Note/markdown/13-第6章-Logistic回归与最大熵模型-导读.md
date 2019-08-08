@@ -17,7 +17,7 @@ $P(Y=1 | x)=\frac{\exp (w \cdot x)}{1+\exp (w \cdot x)}$
 #### 二项Logistic回归模型参数估计
 已知$y_i \in \{0,1\}$，$\pi(x)$  
 可得$P_w(y|x)=\pi(x)^y[1-\pi(x)]^{1-y}$  
-似然函数为$L(w)=\prod_{i=1}^{N} \pi(x)^{y_i}[1-\pi(x)]^{1-y_i}$  
+似然函数为$\displaystyle L(w)=\prod_{i=1}^{N} \pi(x)^{y_i}[1-\pi(x)]^{1-y_i}$  
 $\begin{aligned} 最大化似然函数：\max \ln L(w)
 &= \sum_{i=1}^N\big\{ y_i \ln \pi(x) + (1-y_i)\ln\big[1-\pi(x)\big] \big\} \\
 &= \sum_{i=1}^N\big\{y_i (w \cdot x_i)- \ln \big[1+\exp(w \cdot x_i)\big]\big\}
@@ -28,8 +28,8 @@ $\begin{aligned} 最大化似然函数：\max \ln L(w)
 &emsp;&emsp;在二分类Logistic回归模型中，$\ln \frac{\pi(x)}{1-\pi(x)} \Rightarrow \ln \frac{P(Y=1|x)}{P(Y=0|x)}$。  
 &emsp;&emsp;在多分类Logistic回归模型中，$Y$取值为$1,\cdots,K$，那么Logit变换是$\ln \frac{p_(Y=k|x)}{P(Y=K|x)} = w_k \cdot x \in (-\infty, +\infty)$，因为$k$的取值为$1,\cdots, K-1$，所以$w$变为$w_k$，一共需要求取$K-1$个参数向量。  
 所以可得下面两个公式：  
-$P(Y=k|x)=\frac{\exp (w_k \cdot x)}{1+\sum_{k=1}^{K-1} \exp (w_k \cdot x)}, k=1,\cdots,K-1$   
-$P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1} \exp (w_k \cdot x)}$  
+$\displaystyle P(Y=k|x)=\frac{\exp (w_k \cdot x)}{1+\sum_{k=1}^{K-1} \exp (w_k \cdot x)}, k=1,\cdots,K-1$   
+$\displaystyle P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1} \exp (w_k \cdot x)}$  
 
 ### 最大熵模型
 &emsp;&emsp;最大熵模型在自然语言处理中是一个很常用的模型。  
@@ -52,8 +52,8 @@ $$\begin{array}{l}
 \end{array}$$  
 
 ----
-&emsp;&emsp;**条件熵**是给定一个随机变量$x$，在已知$x$的信息下，求随机变量$y_i$的混乱程度。可得$H(y | x)=-\sum_y P(y | x) \ln P(y | x)$，由于在所有训练数据集中$x$的取值是不一样的，只需要求解$x$关于$y$的期望，可得$H(P)=E_{x} H(y | x)=-\sum_{x,y} P(x) P(y | x) \ln P(y | x)$，其中$P(x)$可以用样本上的分布$\tilde{P}(x)$进行替换，所以可得如下公式：
-$$H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)$$  
+&emsp;&emsp;**条件熵**是给定一个随机变量$x$，在已知$x$的信息下，求随机变量$y_i$的混乱程度。可得$\displaystyle H(y | x)=-\sum_y P(y | x) \ln P(y | x)$，由于在所有训练数据集中$x$的取值是不一样的，只需要求解$x$关于$y$的期望，可得$\displaystyle H(P)=E_{x} H(y | x)=-\sum_{x,y} P(x) P(y | x) \ln P(y | x)$，其中$P(x)$可以用样本上的分布$\tilde{P}(x)$进行替换，所以可得如下公式：
+$$\displaystyle H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)$$  
 **特征函数：**
 $$f(x, y)=\left\{\begin{array}{l}{1, x\text{与}y\text{满足某一事实}} \\ {0,\text{否则}}\end{array}\right.$$  
 
@@ -77,15 +77,15 @@ $$E_{P(x,y)}(f_i(x,y))=E_{\tilde{P}(x,y)}(f_i(x,y))$$
 ----
 最大熵模型对应的最优化问题：  
 $$\begin{array}{ll}
-{\max _{P \in C}} & {H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ 
-{\text { s.t. }} &{E_P(f_i)=E_{\tilde{P}}(f_i), \quad i=1,2, \cdots, n} \\  
-&{\sum_{y} P(y | x)=1}
+{\displaystyle \max_{P \in C}} & {\displaystyle H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ 
+{\text { s.t. }} &{\displaystyle E_P(f_i)=E_{\tilde{P}}(f_i), \quad i=1,2, \cdots, n} \\  
+&{\displaystyle \sum_{y} P(y | x)=1}
 \end{array}$$  
-求出的结果是$P_{w}(y | x)=\frac{1}{z_w(x)} \exp (\sum_{i=1}^n w_i f_i(x, y))$，其中$w=\arg \max L_\tilde{P}(P_w)=\log \prod_{(x,y)} P(y | x)^{\tilde{P}(x, y)}$  
-**直观理解：**给定输入变量$x$，分别求解$y$取不同值时，对应的概率分布，$\sum_{i=1}^n w_i f_i(x, y)$表示$n$个特征在给定的$(x,y)$上出现的次数，$(x,y)$满足几个特征，$w_i$表示该特征的重要程度，当满足的特征越多，并且这些特征越重要，$P_{w}(y | x)$的概率越大。
+求出的结果是$\displaystyle P_{w}(y | x)=\frac{1}{z_w(x)} \exp \big(\sum_{i=1}^n w_i f_i(x, y)\big)$，其中$\displaystyle w=\arg \max L_\tilde{P}(P_w)=\log \prod_{(x,y)} P(y | x)^{\tilde{P}(x, y)}$  
+**直观理解：**给定输入变量$x$，分别求解$y$取不同值时，对应的概率分布，$\displaystyle \sum_{i=1}^n w_i f_i(x, y)$表示$n$个特征在给定的$(x,y)$上出现的次数，$(x,y)$满足几个特征，$w_i$表示该特征的重要程度，当满足的特征越多，并且这些特征越重要，$P_{w}(y | x)$的概率越大。
 
 ### 模型学习的最优化算法
-**改进的迭代尺度法：**求最大化对数似然函数，该对数似然函数为$L(w)=\sum_{x, y} \tilde{P}(x, y) \sum_{i=1}^n w_i f_i(x, y)-\sum_x \tilde{P}(x) \log Z_w(x)$，其中$Z_w(x)$是归一化的系数，为了保证给定$x$的条件下$y$的概率和等于1。  
+**改进的迭代尺度法：**求最大化对数似然函数，该对数似然函数为$\displaystyle L(w)=\sum_{x, y} \tilde{P}(x, y) \sum_{i=1}^n w_i f_i(x, y)-\sum_x \tilde{P}(x) \log Z_w(x)$，其中$Z_w(x)$是归一化的系数，为了保证给定$x$的条件下$y$的概率和等于1。  
 **拟牛顿法：**$$\min _{w \in R^n} f(w)=\sum_x \tilde{P}(x) \log \sum_y \exp \big(\sum_{i=1}^n w_i f_i(x, y)\big)-\sum_{x, y} \tilde{P}(x, y) \sum_{i=1}^n w_i f_i(x, y)$$
 
 ### 总结
