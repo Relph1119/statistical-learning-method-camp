@@ -36,8 +36,7 @@ $\displaystyle P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1} \exp (w_k \cdot x)}$
 &emsp;&emsp;**最大熵模型原理：**在满足约束条件的模型集合中选择熵最大的模型。  
 &emsp;&emsp;之前介绍过熵的概念，表示数据的混乱程度。为什么要选择熵最大？因为在不知道任何信息的情况下，假设数据在各个取值上面是比较平均的（即比较混乱的）。  
 
-----
-**书上例题6.1：**假设随机变量$X$有5个取值$\{A,B,C,D,E\}$，要估计取各个值的概率$P(A),P(B),P(C),P(D),P(E)$。  
+> **书上例题6.1：**假设随机变量$X$有5个取值$\{A,B,C,D,E\}$，要估计取各个值的概率$P(A),P(B),P(C),P(D),P(E)$。  
 **解答：**  
 &emsp;&emsp;可知$P(A)+P(B)+P(C)+P(D)+P(E)=1，P(k) \geqslant 0,k \in \{A,B,C,D,E\}$  
 &emsp;&emsp;根据最大熵原理，可得$P(A)=P(B)=P(C)=P(D)=P(E)=\frac{1}{5}$  
@@ -51,14 +50,12 @@ $$\begin{array}{l}
 \quad\quad \sum_{i=1}^5 P(y_i)=\sum_{i=1}^5 \tilde{P}(y_i)=1
 \end{array}$$  
 
-----
 &emsp;&emsp;**条件熵**是给定一个随机变量$x$，在已知$x$的信息下，求随机变量$y_i$的混乱程度。可得$\displaystyle H(y | x)=-\sum_y P(y | x) \ln P(y | x)$，由于在所有训练数据集中$x$的取值是不一样的，只需要求解$x$关于$y$的期望，可得$\displaystyle H(P)=E_{x} H(y | x)=-\sum_{x,y} P(x) P(y | x) \ln P(y | x)$，其中$P(x)$可以用样本上的分布$\tilde{P}(x)$进行替换，所以可得如下公式：
 $$\displaystyle H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)$$  
 **特征函数：**
 $$f(x, y)=\left\{\begin{array}{l}{1, x\text{与}y\text{满足某一事实}} \\ {0,\text{否则}}\end{array}\right.$$  
 
-----
-下面举例说明：  
+> 下面举例说明：  
 以英汉翻译为例，对于英语中的“take”，它对应汉语的翻译有：  
 - “抓住”: The mother takes her child by the hand. 母亲抓住孩子的手。
 - “拿走”：Take the book home. 把书拿回家。
@@ -68,13 +65,12 @@ $$f(x, y)=\left\{\begin{array}{l}{1, x\text{与}y\text{满足某一事实}} \\ {
 - “花费”：It takes a lot of money to buy a house. 买一所房子要花一大笔钱。
 - “理解、领会”：How do you take this package? 你怎么理解这段话？  
 
-&emsp;&emsp;以上可知这是$Y$的不同类别，训练集中的实例$x$就是说的话（英语），对应的$y$是对应汉语的翻译，这些实例对应的翻译$y$是不一样的，从已经获得的样本中发现，如果take后面有一个单词bus，那就将take翻译为“乘坐”，也就是说$y=\text{乘坐}$，$x$中的take后面有一个单词bus。这就是观察到的一个特征，然后用特征函数来描述这个信息。  
+> &emsp;&emsp;以上可知这是$Y$的不同类别，训练集中的实例$x$就是说的话（英语），对应的$y$是对应汉语的翻译，这些实例对应的翻译$y$是不一样的，从已经获得的样本中发现，如果take后面有一个单词bus，那就将take翻译为“乘坐”，也就是说$y=\text{乘坐}$，$x$中的take后面有一个单词bus。这就是观察到的一个特征，然后用特征函数来描述这个信息。  
 &emsp;&emsp;可得到特征函数：
 $$f(x, y)=\left\{\begin{array}{l}{1, \text{if} \quad y=\text{“乘坐” and next(x)}=\text{“bus”}} \\ {0}\end{array}\right.$$  
 &emsp;&emsp;会观察到很多这样的信息，一般用$f_i(x,y)$来表示，其中$i=1,\dots,n$，将上述函数加到最大熵的约束条件中，让该特征在训练集实例（即样本）上出现的概率等于该特征在总体中出现的概率，那要如何用数学语言描述呢？因为$f_i(x,y)$是一个二值函数，在总体中出现的概率可以用期望$E_{P(x,y)}(f_i(x,y))$表示，可得：
 $$E_{P(x,y)}(f_i(x,y))=E_{\tilde{P}(x,y)}(f_i(x,y))$$  
 
-----
 最大熵模型对应的最优化问题：  
 $$\begin{array}{ll}
 {\displaystyle \max_{P \in C}} & {\displaystyle H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ 

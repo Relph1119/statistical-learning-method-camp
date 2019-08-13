@@ -31,11 +31,9 @@ $\begin{aligned}  将上式代入并整理：L(w+\delta) - L(w)
 目前得到了改变量的下界，如果想让该值最大，就最大化$A(\delta|w)$值。  
 $\because (e^{\sum \delta_i f_i})' = e^{\sum \delta_i f_i} \cdot f_i$，求导之后依然有其他的$\delta_i$分量，但是希望对$\delta_i$求导之后能得到只关于$\delta_i$的函数，使得$g(\delta_i)=0$，需要对$\displaystyle \exp \big( \sum_{i=1}^n \delta_i f_i(x,y) \big)$再进行变换，需要用到Jesson不等式。
 
-----
-**Jesson不等式：**  
+> **Jesson不等式：**  
 对一个凸函数$\phi(x)$，已知权重$a_i$，$\sum a_i = 1$，下列不等式成立：$$\phi(\sum_i a_i x_i) \leqslant \sum_i a_i \phi(x_i)$$
 
-----
 根据Jesson不等式，可得：
 $$\begin{aligned}  \exp \big( \sum_i \delta_i f_i(x,y) \big) 
 &= \exp (\sum_i \frac{f_i(x,y)}{f^\#(x,y)} f^\#(x,y) \delta_i) \\
@@ -44,11 +42,9 @@ $$\begin{aligned}  \exp \big( \sum_i \delta_i f_i(x,y) \big)
 $\displaystyle \therefore A(\delta |w) \geqslant \sum_{x,y} \tilde{P}(x, y) \sum_{i=1}^n \delta_i f_i(x,y) + 1 - \sum_x \tilde{P}(x) \sum_y \big[ P_w(y|x) \sum_i \frac{f_i(x,y)}{f^\#(x,y)} \exp(f^\#(x,y) \delta_i) \big] = B(\delta | w)$  
 &emsp;&emsp;经过上述放缩，$B(\delta|w)$是对数似然函数改变量的一个新的下界。对$B(\delta|w)$求导，使得导数等于0。 
 
-----
-&emsp;&emsp;再考虑迭代尺度法，收敛的条件是$L(w+\delta)$和$L(w)$的差值是接近0的，即最大化没有提升空间了，当$L(w + \delta) - L(w) = 0$，则$\delta=0$。  
+> &emsp;&emsp;再考虑迭代尺度法，收敛的条件是$L(w+\delta)$和$L(w)$的差值是接近0的，即最大化没有提升空间了，当$L(w + \delta) - L(w) = 0$，则$\delta=0$。  
 &emsp;&emsp;会有下面思考：放缩了两次，怎样保证最大化下界，最后收敛时，可以使得$L(w + \delta) - L(w)$最大化呢？可将$\delta=0$带入下界公式中，观察得到的值是否为0。当$\delta=0$时，满足$A(\delta|w)=B(\delta|w)=0$。  
 
-----
 &emsp;&emsp;求$B(\delta|w)$对$\delta_i$的偏导数，并令偏导数为0可得：$$\sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) = E_{\tilde{P}}(f_i)$$
 &emsp;&emsp;求解使得该等式成立的$\delta_i$，没有一个显示的形式，对于这样一个方程，要如何寻找零点？此时可以用牛顿迭代法。  
 &emsp;&emsp;上述问题变为：已知$\displaystyle g(\delta_i) = \sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) - E_{\tilde{P}}(f_i)$，令$g(\delta_i)  = 0$，求解$\delta_i$。  

@@ -55,8 +55,7 @@ $\displaystyle \therefore \prod_{m=1}^M Z_m = \prod_{m=1}^M [2 \sqrt{e_m(1-e_m)}
 书中介绍的是由$e^x$和$\sqrt{1-x}$在点$x=0$的泰勒展开式推导，泰勒展开是用一个多项式逼近任意一个函数。  
 考察$\sqrt{(1-4 \gamma^2)} \leqslant \exp( -2 \gamma^2)$  
 
----
-$f(x)=\sqrt{1-x}=(1-x)^{\frac{1}{2}} \\ 
+> $f(x)=\sqrt{1-x}=(1-x)^{\frac{1}{2}} \\ 
 f'(x) = -\frac{1}{2}(1-x)^{-\frac{1}{2}} \\  
 f''(x) = -\frac{1}{4}(1-x)^{-\frac{3}{2}}$  
 $f(x)$在$x=0$处的二阶泰勒展开为：$$\begin{aligned} f(x) 
@@ -65,7 +64,7 @@ $f(x)$在$x=0$处的二阶泰勒展开为：$$\begin{aligned} f(x)
 \end{aligned} $$  
 $\therefore f(4 \gamma^2) \approx 1 - 2 \gamma^2 - 2 \gamma^4$
 
-$g(x) = e^x \\
+> $g(x) = e^x \\
 g'(x) = e^x \\ g''(x) = e^x$  
 $g(x)$在$x=0$处的二阶泰勒展开为：$$\begin{aligned} g(x) 
 &= g(0) + x g'(0) + \frac{1}{2} x^2 g''(0) + \cdots \\
@@ -73,7 +72,6 @@ $g(x)$在$x=0$处的二阶泰勒展开为：$$\begin{aligned} g(x)
 \end{aligned} $$
 $\therefore g(-2 \gamma^2) \approx 1 - 2 \gamma^2 + 2 \gamma^4 $  
 
----
 $\therefore \begin{array}{l} 
 f(4 \gamma^2) = \sqrt{(1-4 \gamma^2)} \approx 1 - 2 \gamma^2 - 2 \gamma^4 \\ 
 g(-2 \gamma^2) = \exp( -2 \gamma^2) \approx 1 - 2 \gamma^2 + 2 \gamma^4 
