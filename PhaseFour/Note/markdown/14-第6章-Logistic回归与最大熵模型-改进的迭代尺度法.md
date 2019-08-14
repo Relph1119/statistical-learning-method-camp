@@ -48,4 +48,4 @@ $\displaystyle \therefore A(\delta |w) \geqslant \sum_{x,y} \tilde{P}(x, y) \sum
 &emsp;&emsp;求$B(\delta|w)$对$\delta_i$的偏导数，并令偏导数为0可得：$$\sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) = E_{\tilde{P}}(f_i)$$
 &emsp;&emsp;求解使得该等式成立的$\delta_i$，没有一个显示的形式，对于这样一个方程，要如何寻找零点？此时可以用牛顿迭代法。  
 &emsp;&emsp;上述问题变为：已知$\displaystyle g(\delta_i) = \sum_{x,y} \tilde{P}(x) P_w(y|x)f_i(x,y) \exp (\delta_i f^\#(x,y)) - E_{\tilde{P}}(f_i)$，令$g(\delta_i)  = 0$，求解$\delta_i$。  
-&emsp;&emsp;求解步骤：先给出$\delta_i$的初值，更新$\delta_i^{(k+1)} = \delta_i^{(k)} - \frac{g(\delta_i^{(k)})}{g'(\delta_i^{(k)})}$ 
+&emsp;&emsp;求解步骤：先给出$\delta_i$的初值，更新$\displaystyle \delta_i^{(k+1)} = \delta_i^{(k)} - \frac{g(\delta_i^{(k)})}{g'(\delta_i^{(k)})}$ 

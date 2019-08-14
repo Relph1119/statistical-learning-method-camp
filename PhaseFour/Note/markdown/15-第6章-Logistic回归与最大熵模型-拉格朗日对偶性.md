@@ -2,11 +2,11 @@
 &emsp;&emsp;拉格朗日对偶性是用在解优化问题中的一个性质，在第6章最大熵模型的推导过程和第7章SVM都用到了这个性质，主要是按照附录C中的内容来介绍。
 
 ### 原始问题
-&emsp;&emsp;优化问题的一般形式，对于任意一个优化问题，都有一个需要优化的目标函数为$f$，需要优化的变量为$x$，最小化$f(x)$，会有一些约束条件，有不等式约束$c_i(x) \leqslant 0, i= 1, 2, \dots, k$，也有等式约束$h_j(x)=0,j=1,2,\dots,l$，很多问题并不是两个约束都有，比如第6章中，只有等式约束（即$k=0$），第7章SVM中，只有不等式约束（即$l=0$）。  
-原始问题$P$：$$\begin{array}{l}
-\mathop{\min}\limits_{x \in R^n} f(x) \\ 
-\text { s.t. } c_i(x) \leqslant 0, i= 1, 2, \dots, k \\ 
-\quad\quad h_j(x)=0,j=1,2,\dots,l
+&emsp;&emsp;优化问题的一般形式，对于任意一个优化问题，都有一个需要优化的目标函数为$f$，需要优化的变量为$x$，最小化$f(x)$，会有一些约束条件，有不等式约束$c_i(x) \leqslant 0, i= 1, 2, \cdots, k$，也有等式约束$h_j(x)=0,j=1,2,\cdots,l$，很多问题并不是两个约束都有，比如第6章中，只有等式约束（即$k=0$），第7章SVM中，只有不等式约束（即$l=0$）。  
+原始问题$P$：$$\begin{array}{ll}
+\mathop{\min}\limits_{x \in R^n} & f(x) \\ 
+\text { s.t. } & c_i(x) \leqslant 0, i= 1, 2, \cdots, k \\ 
+{}& h_j(x)=0,j=1,2,\cdots,l
 \end{array}$$  
 
 ### 拉格朗日函数
@@ -18,7 +18,7 @@ $\displaystyle L(x, \alpha, \beta) = f(x) + \sum_{i=1}^k \alpha_i c_i(x) + \sum_
 \end{array}  \right.$$
 **结论2：** 对偶问题$D$可以用拉格朗日函数的极大极小问题表示，记为$$\begin{array}{ll}
 \displaystyle \max_{\alpha, \beta} \min_x & L(x, \alpha, \beta) \\ 
-\text { s.t. } & \alpha_i \geqslant 0, i= 1, 2, \dots, k
+\text { s.t. } & \alpha_i \geqslant 0, i= 1, 2, \cdots, k
 \end{array}$$  
 其中，最优解为$\alpha^*,\beta^*$，对应的值记为$d^*$。
 
@@ -54,4 +54,4 @@ c_i(x^*) \leqslant 0 \\
 \alpha_i^* \geqslant 0 \\
 h_j(x^*) = 0
 \end{array}$$
-其中，$\nabla_x L(x^*, \alpha^*, \beta^*) = 0$为拉格朗日函数直观地对$x$求导等于0，$c_i(x^*) \leqslant 0$和$h_j(x^*) = 0$u是原始问题的约束，$\alpha_i^* \geqslant 0$是对偶问题的约束，$\alpha_i^* c_i(x^*) = 0$叫做互补松弛条件，通过KKT条件，求出原始问题和对偶问题的解。
+其中，$\nabla_x L(x^*, \alpha^*, \beta^*) = 0$为拉格朗日函数直观地对$x$求导等于0，$c_i(x^*) \leqslant 0$和$h_j(x^*) = 0$u是原始问题的约束，$\alpha_i^* \geqslant 0$是对偶问题的约束，$\alpha_i^* c_i(x^*) = 0$称为互补松弛条件，通过KKT条件，求出原始问题和对偶问题的解。
