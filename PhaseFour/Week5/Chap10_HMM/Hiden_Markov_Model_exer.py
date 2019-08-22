@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from pandas.core import series
 
 
 class MyHMM:
@@ -41,7 +42,7 @@ class MyHMM:
         index = []
         sigema = self.p * self.B[self.Ob[0]]
         for i in range(1, self.Ob.size):
-            _sigema = sigema.values * (self.A.T)
+            _sigema = sigema.values * self.A.T
             col_index = np.argmax(_sigema, axis=1)
             row_index = np.arange(self.p.size)
             sigema = _sigema[row_index, col_index] * self.B[self.Ob[i]]

@@ -1,6 +1,6 @@
 import numpy as np
 from collections import Counter
-from .draw import draw
+from Week1.Chap3_KNN.draw import draw
 from concurrent import futures
 import heapq
 import time
@@ -38,7 +38,7 @@ class KNN:
     # 用多进程实现并行，处理多个值的搜索
     def predict_many(self, X_new):
         # 导入多进程
-        with futures.ProcessPoolExecutor(max_workers=4) as executor:
+        with futures.ThreadPoolExecutor(max_workers=4) as executor:
             # 建立多进程任务
             tasks = [executor.submit(self.predict_single, X_new[i]) for i in range(X_new.shape[0])]
             # 驱动多进程运行

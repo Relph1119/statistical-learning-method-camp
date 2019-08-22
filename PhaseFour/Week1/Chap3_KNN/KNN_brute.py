@@ -1,6 +1,6 @@
 import numpy as np
 from collections import Counter
-from .draw import draw
+from Week1.Chap3_KNN.draw import draw
 
 
 class KNN:
@@ -45,7 +45,7 @@ def main():
         clf = KNN(X_train, y_train, k=k)
         # 对测试数据进行分类预测
         y_predict = clf.predict(X_new)
-        print("k={},被分类为：{}".format(k, y_predict))
+        print("k={}，被分类为：{}".format(k, y_predict))
 
 
 if __name__ == "__main__":

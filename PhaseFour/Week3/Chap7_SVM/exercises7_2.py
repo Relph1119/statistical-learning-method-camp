@@ -4,9 +4,8 @@ from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
 
-"""构造L(a,b,c,d)表达式,e=a+b+c-d"""
 
-
+# 构造L(a,b,c,d)表达式,e=a+b+c-d
 def creat(co, X, y, a, b, c, d, e):
     L_0 = co * X * y
     L_1 = L_0.sum(axis=0)
@@ -16,9 +15,7 @@ def creat(co, X, y, a, b, c, d, e):
     return L
 
 
-"""若L无解，则从L的多个边界求解"""
-
-
+# 若L无解，则从L的多个边界求解
 def _find_submin(L, num):
     if num.shape[0] == 1:
         return None
@@ -31,9 +28,7 @@ def _find_submin(L, num):
         return res
 
 
-"""判断方程是否有唯一不小于0且不全为0的实数解"""
-
-
+# 判断方程是否有唯一不小于0且不全为0的实数解
 def _judge(res):
     for s in res.values():
         try:
@@ -44,9 +39,7 @@ def _judge(res):
     return True if sum(res.values()) != 0 else False
 
 
-"""求解所有可能的极值点，若极值不存在或不在可行域内取到，则在边界寻找极值点"""
-
-
+# 求解所有可能的极值点，若极值不存在或不在可行域内取到，则在边界寻找极值点
 def _find_min(L, num):
     pro_res = []
     res = solve(diff(L, num), list(num))
@@ -67,9 +60,7 @@ def _find_min(L, num):
     return pro_res
 
 
-"""将所有结果排列整齐"""
-
-
+# 将所有结果排列整齐
 def reset(res):
     if not isinstance(res[0], list):
         if res[0]:
@@ -79,9 +70,7 @@ def reset(res):
             reset(i)
 
 
-"""求解极小值点"""
-
-
+# 求解极小值点
 def find_min(L, num, a, b, c, d, e):
     # 求解所有可能的极小值点
     results = _find_min(L, num)
@@ -102,9 +91,7 @@ def find_min(L, num, a, b, c, d, e):
     return res
 
 
-"""计算 w b"""
-
-
+# 计算 w b
 def calculate_w_b(X, y, res):
     alpha = np.array([[i] for i in res.values()])
     w = (alpha * X * y).sum(axis=0)
@@ -115,9 +102,7 @@ def calculate_w_b(X, y, res):
     return w, b
 
 
-"""绘制样本点、分离超平面和间隔边界"""
-
-
+# 绘制样本点、分离超平面和间隔边界
 def draw(X, y, w, b):
     y = np.array([y[i][0] for i in range(y.shape[0])])
     X_po = X[np.where(y == 1)]

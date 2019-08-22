@@ -1,10 +1,11 @@
-"""朴决策树sklearn的实现"""
-"""2019/4/19"""
-
+"""
+朴决策树sklearn的实现
+2019/4/19
+"""
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import preprocessing
 import numpy as np
-import pandas as pds
+import pandas as pd
 import time
 
 from IPython.display import Image

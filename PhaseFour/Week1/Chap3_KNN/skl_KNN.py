@@ -23,8 +23,7 @@ def main():
         # 预测
         y_predict = clf.predict(X_new)
         # print(clf.predict_proba(X_new))
-        print("预测正确率:{:.0%}".format(clf.score([[5, 3]], [[1]])))
-        print("k={},被分类为：{}".format(k, y_predict))
+        print("k={}，被分类为：{}".format(k, y_predict), "预测正确率:{:.0%}".format(clf.score([[5, 3]], [[1]])))
 
 
 if __name__ == "__main__":

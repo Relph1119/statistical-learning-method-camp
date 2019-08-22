@@ -24,10 +24,10 @@ def main():
         res.append((y_predict, correct_rate))
 
     # 格式化输出
-    methodes = ["liblinear", "newton-cg", "lbfgs    ", "sag      ", "saga      "]
-    print("solver选择：          {}".format("  ".join(method for method in methodes)))
-    print("{}被分类为：  {}".format(X_new[0], "        ".join(str(re[0]) for re in res)))
-    print("测试{}组数据，正确率： {}".format(X_train.shape[0], "        ".join(str(round(re[1], 1)) for re in res)))
+    methodes = ["liblinear", "newton-cg  ", "lbfgs     ", "sag     ", "saga      "]
+    print("solver选择：        {}".format("  ".join(method for method in methodes)))
+    print("{}被分类为：   {}".format(X_new[0], "        ".join(str(re[0]) for re in res)))
+    print("测试{}组数据，正确率：   {}".format(X_train.shape[0], "        ".join(str(round(re[1], 1)) for re in res)))
 
 
 if __name__ == "__main__":

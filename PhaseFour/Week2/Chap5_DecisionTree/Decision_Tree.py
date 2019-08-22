@@ -1,5 +1,7 @@
-"""朴决策树的实现"""
-"""2019/4/18"""
+"""
+朴决策树的实现
+2019/4/18
+"""
 import numpy as np
 import pandas as pd
 import math

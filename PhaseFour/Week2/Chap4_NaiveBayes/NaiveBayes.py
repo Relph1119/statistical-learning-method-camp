@@ -1,5 +1,7 @@
-"""朴素贝叶斯算法的实现"""
-"""2019/4/12"""
+"""
+朴素贝叶斯算法的实现
+2019/4/12
+"""
 import numpy as np
 import pandas as pd
 
@@ -26,7 +28,7 @@ class NaiveBayes():
                 p_x_y = X[(y == j).values][idx].value_counts()  # 选择所有y==j为真的数据点的第idx个特征的值，并对这些值进行（类型：数量）统计
                 for i in p_x_y.index:  # 计算（xi 的编号,xi的取值，y的类型）：概率
                     self.x_types_proba[(idx, i, j)] = (p_x_y[i] + self.lambda_) / (
-                                self.y_types_count[j] + p_x_y.shape[0] * self.lambda_)
+                            self.y_types_count[j] + p_x_y.shape[0] * self.lambda_)
 
     def predict(self, X_new):
         res = []

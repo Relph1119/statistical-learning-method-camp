@@ -1,5 +1,7 @@
-"""朴素贝叶斯算法sklearn实现"""
-"""2019/4/15"""
+"""
+朴素贝叶斯算法sklearn实现
+2019/4/15
+"""
 
 import numpy as np
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
