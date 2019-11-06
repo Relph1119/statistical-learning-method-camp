@@ -11,15 +11,14 @@ class Node(namedtuple("Node", "location left_child right_child")):
 
 # kd tree类
 class KdTree():
-    def __init(self, k=1, p=2):
+    def __init__(self, k=1):
         self.k = k
-        self.p = p
         self.kdtree = None
 
     # 构建kd tree
     def _fit(self, X, depth=0):
         try:
-            k = X.shape[1]
+            k = self.k
         except IndexError as e:
             return None
         # 这里可以展开，通过方差选择axis
@@ -39,7 +38,7 @@ class KdTree():
     def _search(self, point, tree=None, depth=0, best=None):
         if tree is None:
             return best
-        k = point.shape[1]
+        k = self.k
         # 更新 branch
         if point[0][depth % k] < tree.location[depth % k]:
             next_branch = tree.left_child
@@ -60,14 +59,14 @@ class KdTree():
 
 def main():
     KNN = KdTree()
-    X_train = np.array([[5, 4],
+    X_train = np.array([[2, 3],
+                        [5, 4],
                         [9, 6],
                         [4, 7],
-                        [2, 3],
                         [8, 1],
                         [7, 2]])
     KNN.fit(X_train)
-    X_new = np.array([[5, 3]])
+    X_new = np.array([[3, 4.5]])
     res = KNN.predict(X_new)
     print(res)
 
