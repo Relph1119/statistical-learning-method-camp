@@ -20,7 +20,8 @@ def show(clf, features, y_types):
                                     class_names=y_types,
                                     filled=True, rounded=True,
                                     special_characters=True)
-    graph = pydotplus.graph_from_dot_data(dot_data)
+    # 消除中文乱码的问题
+    graph = pydotplus.graph_from_dot_data(dot_data.replace('helvetica', '"Microsoft YaHei"'))
     # Image(graph.create_png())  #jupyter里可以显示，pycharm显示不出
     graph.write_png(r'DT_show.png')
 
