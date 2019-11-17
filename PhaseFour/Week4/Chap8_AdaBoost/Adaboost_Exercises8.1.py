@@ -1,4 +1,12 @@
-# 自编程求解习题8.1
+#!/usr/bin/env python
+# encoding: utf-8
+"""
+@author: HuRuiFeng
+@file: test.py
+@time: 2019/11/17 12:14
+@desc: 自编程求解习题8.1
+"""
+
 import numpy as np
 
 
