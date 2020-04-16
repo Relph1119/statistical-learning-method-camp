@@ -9,6 +9,9 @@
 3. [李航《统计学习方法》习题笔记](https://sine-x.com/statistical-learning-method)
 - 本训练营的学习安排与课程任务：详见文件夹Books中的《统计学习方法作业》doc文档
 
+## 视频笔记在线阅读地址
+视频笔记在线阅读地址：https://relph1119.github.io/statistical-learning-method-camp
+
 ## 相关资料下载地址（包括视频笔记和习题解答）
 链接：https://pan.baidu.com/s/1TrUW79J06HzVRoqOebLg9w  
 提取码：tc49  
