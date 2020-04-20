@@ -1,7 +1,7 @@
 # 《统计学习方法》训练营
 
 ## 课程资料
-- [ApacheCN](http://ml.apachecn.org/mlia/)
+- [ApacheCN](https://ailearning.apachecn.org/)
 - [廖雪峰 Python3 教程](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)
 - 优秀github资源：  
 1. [李航《统计学习方法》中机器学习模型的LaTeX公式笔记](https://github.com/anch3or/Machine-Learning-Notes)  
