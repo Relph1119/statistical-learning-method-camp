@@ -1,6 +1,6 @@
 # 利用sympy求解习题7.2
 
-from sympy import *
+from sympy import expand, solve, diff, symbols
 import numpy as np
 import matplotlib.pyplot as plt
 

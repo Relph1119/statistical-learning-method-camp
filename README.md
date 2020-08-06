@@ -64,6 +64,15 @@ PhaseOne-----------------------------------深度之眼第一期
 +---Week5----------------------------------第五周作业
 </pre>
 
+## 运行环境设置
+1. 安装相关的依赖包
+    ```shell
+    pip install -r requirements.txt
+    ```
+2. 安装graphviz  
+    可参考博客：https://blog.csdn.net/HNUCSEE_LJK/article/details/86772806
+3. 设置PhaseFour目录为Sources Root
+
 ## 总结
 &emsp;&emsp;笔者有一些作业题是根据优秀资源[3]中解答的，作业题并不难，希望小伙伴们都能动手完成。  
 &emsp;&emsp;该训练营课程来自微信公众号深度之眼，笔者非常推荐，虽然以自学为主，但是在星球中能学到很多知识。该公众号下的机器学习实战训练营也很不错，大家可以尝试学习一下，一定有很大的收获。这个是我在该训练营的作业：[机器学习实战](https://github.com/Relph1119/MachineLearningInAction-Camp)  
